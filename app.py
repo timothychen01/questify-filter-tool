@@ -14,6 +14,7 @@ def process_image(img):
   #open up the mask
   mask = Image.open('mask.png')
   mask = mask.convert('RGBA')
+  mask = mask.resize(img.size)
 
   img.paste(mask, (0,0), mask)
   newdata = img.getdata()
