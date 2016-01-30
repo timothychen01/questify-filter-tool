@@ -14,14 +14,19 @@ def process_image(img):
   #open up the mask
   mask = Image.open('mask.png')
   mask = mask.convert('RGBA')
+
+  img.paste(mask, (0,0), mask)
+  newdata = img.getdata()
+
+  '''
+
   #make sure it matches the size of the image
   mask = mask.resize(img.size)
   #enhance it by raising its saturation
-  converter = ImageEnhance.Color(mask)
-  mask = converter.enhance(2.0)
+  #converter = ImageEnhance.Color(mask)
+  #mask = converter.enhance(2.0)
   #get mutable data
   mdata = mask.getdata()
-
   #make sure our image has alpha channel
   img = img.convert('RGBA')
   #dummy convert does nothing but available for saturation tweaking
@@ -36,17 +41,25 @@ def process_image(img):
   for iitem, mitem in zip(idata, mdata):
     #ratio of each pixel is 1:2 (image:mask)
     #tweak this for different colorings
-    im = 1.0
-    mm = 2.0
+    r1 = iitem[0]
+    r2 = mitem[0]
+    g1 = iitem[1]
+    g2 = mitem[1]
+    b1 = iitem[2]
+    b2 = mitem[2]
+
+    #mm = 2.0
     #the higher b, the higher the brightness
-    b = .3
+    #b = .3
     #create RGBs
-    r = int((iitem[0] * im + mitem[0] * mm) / (im + mm - b))
-    g = int((iitem[1] * im + mitem[1] * mm) / (im + mm - b))
-    b = int((iitem[2] * im + mitem[2] * mm) / (im + mm - b))
+    r = r1
+    g =
+    b =
     a = 255
     #add it to our output
     newdata.append((r, g, b, a))
+
+  '''
 
   #create an image from our new combined data
   img.putdata(newdata)
@@ -61,7 +74,7 @@ def process_image(img):
 def index():
     return render_template('index.html')
 
-@app.route('/technify', methods=['POST'])
+@app.route('/rushify', methods=['POST'])
 def classify_upload():
   try:
     #get the image from the request
