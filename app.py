@@ -75,7 +75,7 @@ def process_image(img):
 def index():
     return render_template('index.html')
 
-@app.route('/rushify', methods=['POST'])
+@app.route('/questify', methods=['POST'])
 def classify_upload():
   try:
     #get the image from the request
