@@ -56,7 +56,7 @@ def process_image(img):
 
 @app.route('/')
 def index():
-    return render_template('old_index.html')
+    return render_template('index.html')
 
 @app.route('/questify', methods=['POST'])
 def classify_upload():
