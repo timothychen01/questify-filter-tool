@@ -5,8 +5,31 @@ from flask import Flask, redirect, jsonify, render_template, request, send_file
 import werkzeug
 import datetime
 import uuid
+from flask import Flask, redirect, url_for, session, request
+from flask_oauthlib.client import OAuth, OAuthException
+
+
+FACEBOOK_APP_ID = '1813961962211551'
+FACEBOOK_APP_SECRET = '1d4efe2619879a1cd22e39e30767e4fb'
+
 
 app = Flask(__name__)
+app.debug = True
+app.secret_key = 'development'
+oauth = OAuth(app)
+
+facebook = oauth.remote_app(
+    'facebook',
+    consumer_key=FACEBOOK_APP_ID,
+    consumer_secret=FACEBOOK_APP_SECRET,
+    request_token_params={'scope': 'email'},
+    base_url='https://graph.facebook.com',
+    request_token_url=None,
+    access_token_url='/oauth/access_token',
+    access_token_method='GET',
+    authorize_url='https://www.facebook.com/dialog/oauth'
+)
+
 
 ALLOWED_IMAGE_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
