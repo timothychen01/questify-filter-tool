@@ -117,7 +117,10 @@ def facebook_authorized():
     #     (me.data['id'], me.data['name'], request.args.get('next'))
     payload = {'type':'large','redirect':'true','width':'500','height':'500'}
     r = requests.get("http://graph.facebook.com/" + me.data['id'] + "/picture", params=payload)
-    resultFilename = process_image(r)
+    img = Image.open(BytesIO(r.content))
+
+    #process the image
+    resultFilename = process_image(img)
     #send it back
     return send_file(resultFilename)
 
@@ -127,15 +130,6 @@ def test():
     payload = {'type':'large','redirect':'true','width':'500','height':'500'}
     r = requests.get("http://graph.facebook.com/893914824028397/picture", params=payload)
     img = Image.open(BytesIO(r.content))
-
-    #create filename
-    # filename_ = str(datetime.datetime.now()).replace(' ', '_') + werkzeug.secure_filename('893914824028397')
-    # filename = os.path.join('/tmp', filename_)
-
-    # #save the file to /tmp
-    # img.save(filename+'.jpg', 'JPEG')
-    # #open the image for Pillow
-    # image = Image.open(filename)
 
     #process the image
     resultFilename = process_image(img)
