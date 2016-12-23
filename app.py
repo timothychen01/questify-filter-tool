@@ -123,20 +123,6 @@ def facebook_authorized():
     #send it back
     return send_file(resultFilename)
 
-
-@app.route('/test')
-def test():
-    payload = {'type':'large','redirect':'true','width':'500','height':'500'}
-    r = requests.get("http://graph.facebook.com/893914824028397/picture", params=payload)
-    img = Image.open(BytesIO(r.content))
-
-    #process the image
-    resultFilename = process_image(img)
-    #send it back
-    return send_file(resultFilename)
-
-
-
 @facebook.tokengetter
 def get_facebook_oauth_token():
     return session.get('oauth_token')
