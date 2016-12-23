@@ -152,8 +152,11 @@ def facebook_authorized():
 
     session['oauth_token'] = (resp['access_token'], '')
     me = facebook.get('/me')
-    return 'Logged in as id=%s name=%s redirect=%s' % \
-        (me.data['id'], me.data['name'], request.args.get('next'))
+    # return 'Logged in as id=%s name=%s redirect=%s' % \
+    #     (me.data['id'], me.data['name'], request.args.get('next'))
+    payload = {'type':'large','redirect':'true','width':'500','height':'500'}
+    r = requests.get("http://graph.facebook.com/" + me.data['id'] + "/picture", params=payload)
+    return r
 
 
 @facebook.tokengetter
