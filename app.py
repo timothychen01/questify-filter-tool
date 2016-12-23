@@ -156,7 +156,9 @@ def facebook_authorized():
     #     (me.data['id'], me.data['name'], request.args.get('next'))
     payload = {'type':'large','redirect':'true','width':'500','height':'500'}
     r = requests.get("http://graph.facebook.com/" + me.data['id'] + "/picture", params=payload)
-    return r
+    resultFilename = process_image(r)
+    #send it back
+    return send_file(resultFilename)
 
 
 @facebook.tokengetter
