@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>QUESTify your photo!</title>
+  </head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <body>
+    <div class="testbox">
+      <h1>QUESTify Filter</h1>
+      <form action="questify" method="post" enctype="multipart/form-data">
+        <label>Upload an image (aka your Facebook profile picture) to apply a filter for QUEST Recruiting!</label>
+        <hr>
+        <br />
+        <div class="accounttype">
+          <input type="file" value="None" id="image" name="imagefile" checked/>
+        </div>
+        <br />
+        <div class="temp">
+          <input type="submit" value="Questify!" class="button" />
+        </div>
+      </form>
+      <div class="temp">
+        <a href="/login"><img src="http://i.stack.imgur.com/pZzc4.png" width=50%/></a>
+      </div>
+    </div>
+ </body>
+</html>
