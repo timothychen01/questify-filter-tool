@@ -98,13 +98,46 @@ def classify_upload():
     image = Image.open(filename)
   except Exception as err:
     #uh oh. Something went wrong.
-    print 'Uploaded image open error: ' + err
+    print ('Uploaded image open error: ' + err)
     return 'Error: ' + err
 
   #process the image
   resultFilename = process_image(image)
   #send it back
   return send_file(resultFilename)
+
+@app.route('/login')
+def login():
+    callback = url_for(
+        'facebook_authorized',
+        next=request.args.get('next') or request.referrer or None,
+        _external=True
+    )
+    return facebook.authorize(callback=callback)
+
+
+@app.route('/login/authorized')
+def facebook_authorized():
+    resp = facebook.authorized_response()
+    if resp is None:
+        return 'Access denied: reason=%s error=%s' % (
+            request.args['error_reason'],
+            request.args['error_description']
+        )
+    if isinstance(resp, OAuthException):
+        return 'Access denied: %s' % resp.message
+
+    session['oauth_token'] = (resp['access_token'], '')
+    me = facebook.get('/me')
+    return 'Logged in as id=%s name=%s redirect=%s' % \
+        (me.data['id'], me.data['name'], request.args.get('next'))
+
+
+@facebook.tokengetter
+def get_facebook_oauth_token():
+    return session.get('oauth_token')
+
+
 
 if __name__ == '__main__':
   port = int(os.environ.get('PORT', 5000))
