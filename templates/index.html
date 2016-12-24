@@ -1,57 +1,85 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en" class="no-js">
-
-  <head>
-    <title>QUESTify your photo!</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/component.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <!--[if IE]>
+	<head>
+		<title>QUESTify your photo!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="static/assets/css/button_styles.css" />
+		<link rel="stylesheet" href="static/assets/css/component.css" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+		<!--[if lte IE 9]><link rel="stylesheet" href="static/assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="static/assets/css/ie8.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+		<!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
     
     <!-- remove this if you use Modernizr -->
     <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
-  </head>
-  
-  <body>
-    <div class="container">
-			<div class="content">
-        <h1>QUESTify Filter</h1>
-        
-        
-        
-        
-        
-        
-        <form action="questify" method="post" enctype="multipart/form-data">
-          <label>Upload a square-shaped image or let us pull your Facebook profile photo to apply a filter for QUEST Recruiting!</label>
-          <hr>
-          <br />
-          <div class="accounttype">
-            <input type="file" value="None" id="image" name="imagefile" checked/>
-          </div>
-          
-          <div class="box">
-  					<input type="file" class="inputfile inputfile-1" name="imagefile" id="image" data-multiple-caption="{count} files selected" multiple />
-  					<label for="image"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Choose a file&hellip;</span></label>
-  				</div>
-          
-          
-          <br />
-          <div class="temp">
-            <input type="submit" value="Questify!" class="button" />
-          </div>
-        </form>
-        <div class="temp">
-          <a href="/login"><img src="http://i.stack.imgur.com/pZzc4.png" width=50%/></a>
-        </div>
-        
-        
-      </div>
-    </div>
-    
-    <script src="static/js/custom-file-input.js"></script>
- </body>
- 
+	</head>
+	<body class="is-loading">
+		
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				
+				<div id="gap"></div>
+				<img src="static/images/logo.png" height="110em" />
+				<h1>QUESTify Filter</h1>
+				
+				<div id="gap"></div>
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<p>Upload a square-shaped image or let us pull your Facebook profile photo to apply a filter for QUEST Recruiting!</p>
+							<hr>
+		          <br />
+		            
+		          <form action="questify" method="post" enctype="multipart/form-data">
+		            
+		  					<input type="file" class="inputfile inputfile-1" name="imagefile" id="image" data-multiple-caption="{count} files selected" multiple />
+		  					<label for="image"><i class="fa fa-upload"></i> <span>Upload</span></label><br />
+		            
+		            <input type="submit" class="inputfile inputfile-1" id="submit" value="Questify!" class="button" />
+		            <label for="submit"><span>QUESTify!</span></label><br />
+								
+							</form>
+							
+							<div id="desktop">
+								<a href="/login">
+								<input type="submit" class="inputfile inputfile-2" id="submit" value="Questify!" class="button" />
+								<label for="submit"><i class="fa fa-facebook"></i> <span>Use my Facebook photo!</span></label><br />
+								</a>
+							</div>
+							<div id="mobile">
+								<a href="/login">
+								<input type="submit" class="inputfile inputfile-2" id="submit" value="Questify!" class="button" />
+								<label for="submit"><i class="fa fa-facebook"></i> <span>Use Facebook!</span></label><br />
+								</a>
+							</div>
+							
+						</header>
+					</section>
+				
+				
+				<!-- Footer -->
+				<footer id="footer">
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<!--[if lte IE 8]><script src="static/assets/js/respond.min.js"></script><![endif]-->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+			<script src="static/assets/js/custom-file-input.js"></script>
+
+	</body>
 </html>

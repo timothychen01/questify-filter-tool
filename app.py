@@ -38,7 +38,7 @@ ALLOWED_IMAGE_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 def process_image(img):
   #open up the mask
-  mask = Image.open('static/mask.png')
+  mask = Image.open('static/images/mask.png')
   mask = mask.convert('RGBA')
   mask = mask.resize(img.size)
 
