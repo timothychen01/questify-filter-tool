@@ -87,7 +87,13 @@ def classify_upload():
   #process the image
   resultFilename = process_image(image)
   #send it back
-  return send_file(resultFilename)
+  # return send_file(resultFilename)
+  return render_template('questified.html', final_image=resultFilename[5:], desc="Interested in joining a multidisciplinary, hands-on honors program focused on intellectual curiosity, critical thinking, professionalism and teamwork? Apply to QUEST at: apply.questumd.com!")
+
+@app.route('/tmp/<filename>')
+def send_file(filename):
+    return send_from_directory('/tmp', filename)
+
 
 @app.route('/login')
 def login():
@@ -121,9 +127,7 @@ def facebook_authorized():
     #process the image
     resultFilename = process_image(img)
     #send it back
-    return render_template('questified.html', final_image=send_file(resultFilename), desc="Interested in joining a multidisciplinary, hands-on honors program focused on intellectual curiosity, critical thinking, professionalism and teamwork? Apply to QUEST at: apply.questumd.com!")
-    
-    # return send_file(resultFilename), "Interested in joining a multidisciplinary, hands-on honors program focused on intellectual curiosity, critical thinking, professionalism and teamwork? Apply to QUEST at: apply.questumd.com!"
+    return render_template('questified.html', final_image=resultFilename[5:], desc="Interested in joining a multidisciplinary, hands-on honors program focused on intellectual curiosity, critical thinking, professionalism and teamwork? Apply to QUEST at: apply.questumd.com!")
 
 @facebook.tokengetter
 def get_facebook_oauth_token():

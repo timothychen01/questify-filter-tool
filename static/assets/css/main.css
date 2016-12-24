@@ -113,7 +113,7 @@
 /* Type */
 
 	body, input, select, textarea {
-		color: #414f57;
+		color: white;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 14pt;
 		font-weight: 300;
@@ -766,17 +766,17 @@
 	#top-gap {
 		padding: 4em;
 	}
-	
+
 	#gap {
 		padding: 1em;
 	}
-	
+
 	@media screen and (max-width: 500px) {
 		#top-gap {
 			padding: 2em;
 		}
 	}
-	
+
 	@media screen and (max-width: 350px) {
 		#top-gap {
 			padding: 1em;

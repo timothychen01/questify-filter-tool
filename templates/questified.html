@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>QUESTify your photo!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+	</head>
+
+	<body>
+		<div class="container">
+			<img src="static/images/QUESTify.jpg" height="110em" />
+
+			<br />
+
+			<p>Thank you for participating in QUEST Recruiting's efforts! Please use the following description when updating your profile picture: {{ desc }}</p>
+			<img src="{{url_for('send_file', filename=final_image)}}" width="100%">
+		</div>
+	</body>
+</html>
+
+<style>
+	body {
+		height: 100%;
+		background-color: #961323;
+	}
+
+	body, input, select, textarea {
+		color: white;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 11pt;
+		font-weight: 300;
+		line-height: 1.5;
+		letter-spacing: 0.2em;
+	}
+
+	.container {
+		padding: 3em;
+		text-align: center;
+	}
+
+	@media screen and (max-width: 480px) {
+
+		body, input, select, textarea {
+			font-size: 10pt;
+		}
+
+		.container {
+			padding: 0em;
+			text-align: center;
+		}
+
+	}
+</style>
