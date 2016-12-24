@@ -1,13 +1,17 @@
 # questify
 
-Check out [Technica](https://gotechnica.org), an all-ladies hackathon. They've been making these sweet profile pictures and I thought I'd make a quick script that automates the process.
+Based off of cnexus's filter app for AKPsi and AlexEKoren's filter app for [Technica](https://gotechnica.org)
 
-Here's a [demo](http://technify.herokuapp.com)
+Here's a [demo](http://questify-umd.herokuapp.com)
 
 ## Setup
 ```
 pip install -r requirements.txt
 ```
+
+## Configuration
+
+You'll need to create a Facebook app and publish it (get it out of developer mode). Update the FACEBOOK_APP_ID and FACEBOOK_APP_SECRET in `app.py`
 
 ## Running the app
 ```
