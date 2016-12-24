@@ -13,6 +13,8 @@ pip install -r requirements.txt
 
 You'll need to create a Facebook app and publish it (get it out of developer mode). Update the `FACEBOOK_APP_ID` and `FACEBOOK_APP_SECRET` in `app.py`
 
+To change the filter mask, switch out the `mask.png` in `/static/images`
+
 ## Running the app
 ```
 python app.py
