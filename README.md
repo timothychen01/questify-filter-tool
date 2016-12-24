@@ -11,7 +11,7 @@ pip install -r requirements.txt
 
 ## Configuration
 
-You'll need to create a Facebook app and publish it (get it out of developer mode). Update the FACEBOOK_APP_ID and FACEBOOK_APP_SECRET in `app.py`
+You'll need to create a Facebook app and publish it (get it out of developer mode). Update the `FACEBOOK_APP_ID` and `FACEBOOK_APP_SECRET` in `app.py`
 
 ## Running the app
 ```
