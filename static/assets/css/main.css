@@ -763,11 +763,24 @@
 				}
 
 /* Gap Div */
-	#gap {
-		padding: 2em;
+	#top-gap {
+		padding: 4em;
 	}
 	
-	@media screen and (max-width: 360px) {
+	#gap {
+		padding: 1em;
+	}
+	
+	@media screen and (max-width: 500px) {
+		#top-gap {
+			padding: 2em;
+		}
+	}
+	
+	@media screen and (max-width: 350px) {
+		#top-gap {
+			padding: 1em;
+		}
 		#gap {
 			padding: 0.5em;
 		}
