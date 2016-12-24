@@ -1,4 +1,4 @@
-# questify
+# QUESTify Filter Tool
 
 Based off of cnexus's filter app for AKPsi and AlexEKoren's filter app for [Technica](https://gotechnica.org)
 
