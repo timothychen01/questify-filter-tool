@@ -121,7 +121,7 @@ def facebook_authorized():
     #process the image
     resultFilename = process_image(img)
     #send it back
-    return send_file(resultFilename)
+    return send_file(resultFilename), "Interested in joining a multidisciplinary, hands-on honors program focused on intellectual curiosity, critical thinking, professionalism and teamwork? Apply to QUEST at: apply.questumd.com!"
 
 @facebook.tokengetter
 def get_facebook_oauth_token():
