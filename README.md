@@ -1,8 +1,10 @@
 # QUESTify Filter Tool
 
-Based off of cnexus's filter app for AKPsi and AlexEKoren's filter app for [Technica](https://gotechnica.org)
+![Screenshots from the project](/screenshots.png)
 
+Based off of cnexus's filter app for AKPsi and AlexEKoren's filter app for [Technica](https://gotechnica.org)
 Here's a [demo](http://questify-umd.herokuapp.com)
+
 
 ## Setup
 ```
